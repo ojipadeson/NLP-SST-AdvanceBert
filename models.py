@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Oct 25 00:19:30 2020
-
-@author: Jiang Yuxin
-"""
-
 import torch
 from torch import nn
 from transformers import (

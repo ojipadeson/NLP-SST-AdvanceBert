@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Oct 25 00:19:30 2020
-
-@author: Jiang Yuxin
-"""
-
 import os
 import pandas as pd
 import torch
@@ -172,7 +166,7 @@ def model_train_validate_test(train_df_input, dev_df_input, test_df_input, targe
                             "valid_accuracy": valid_accuracies,
                             "valid_auc": valid_aucs
                             },
-                           os.path.join(target_dir_input, "best.pth.tar"))
+                           os.path.join(target_dir_input, "best.pth"))
                 print("save model succesfully!\n")
 
             # run model on test set and save the prediction result to csv
@@ -241,7 +235,7 @@ def model_load_test(test_df_input, target_dir_input, test_prediction_dir,
 if __name__ == "__main__":
     data_path = "data/"
     train_df = pd.read_csv(os.path.join(data_path, "train.tsv"), sep='\t', header=None, names=['similarity', 's1'])
-    dev_df = pd.read_csv(os.path.join(data_path, "dev.tsv"), sep='\t', header=None, names=['similarity', 's1'])
-    test_df = pd.read_csv(os.path.join(data_path, "test.tsv"), sep='\t', header=None, names=['similarity', 's1'])
+    dev_df = pd.read_csv(os.path.join(data_path, "dev_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
+    test_df = pd.read_csv(os.path.join(data_path, "test_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
     target_dir = "output/Bert/"
     model_train_validate_test(train_df, dev_df, test_df, target_dir)

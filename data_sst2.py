@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Nov  2 14:24:49 2020
-
-@author: Jiang Yuxin
-"""
 
 from torch.utils.data import Dataset
 import torch
