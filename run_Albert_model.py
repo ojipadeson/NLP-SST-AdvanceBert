@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import argparse
 import pandas as pd
 import torch
 from torch.utils.data import DataLoader
@@ -165,7 +166,7 @@ def model_train_validate_test(train_df_input, dev_df_input, test_df_input, targe
                             "valid_accuracy": valid_accuracies,
                             "valid_auc": valid_aucs
                             },
-                           os.path.join(target_dir_input, "best.pth.tar"))
+                           os.path.join(target_dir_input, "best.pth"), _use_new_zipfile_serialization=False)
                 print("save model succesfully!\n")
 
             # run model on test set and save the prediction result to csv
@@ -232,8 +233,18 @@ def model_load_test(test_df_input, target_dir_input, test_prediction_dir,
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='data for pj or pure')
+    parser.add_argument('-p', '--pj', action='store_true',
+                        help='use pj-data to train')
+    args = parser.parse_args()
+
+    if args.pj:
+        train_data_file = "train_pj.tsv"
+    else:
+        train_data_file = "train.tsv"
+
     data_path = "data/"
-    train_df = pd.read_csv(os.path.join(data_path, "train.tsv"), sep='\t', header=None, names=['similarity', 's1'])
+    train_df = pd.read_csv(os.path.join(data_path, train_data_file), sep='\t', header=None, names=['similarity', 's1'])
     dev_df = pd.read_csv(os.path.join(data_path, "dev_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
     test_df = pd.read_csv(os.path.join(data_path, "test_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
     target_dir = "output/Albert/"
