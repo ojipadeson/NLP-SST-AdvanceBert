@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 
 from data_sst2 import DataPrecessForSentence
 from models import BertModel, AlbertModel, RobertModel, XlnetModel
-from utils import test
+from utils import test, Metric
 
 test_df = pd.read_csv(os.path.join('data/', "test_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
 target_dir = "output/Bert/"
@@ -46,5 +46,7 @@ test_prediction = pd.DataFrame({'prob_1': all_prob})
 test_prediction['prob_0'] = 1 - test_prediction['prob_1']
 test_prediction['prediction'] = test_prediction.apply(lambda x: 0 if (x['prob_0'] > x['prob_1']) else 1, axis=1)
 test_prediction = test_prediction[['prediction']]
+
+Metric(test_df['similarity'], test_prediction['prediction'])
 
 test_prediction.to_csv('prediction.tsv', sep='\t')

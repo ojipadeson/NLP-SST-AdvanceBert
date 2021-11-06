@@ -7,7 +7,7 @@ These codes are recommended to  run in **Google Colab**, where  you may use free
 ### Result on test
  Model | Accuracy | Precision	| Recall | F1
  ----   | -----  |----- |----- |----- 
- BERT   | 91.8 |	91.8 |	91.8	| 91.8
+ BERT   | 87.55 |	91.8 |	91.8	| 91.8
 RoBERTa	| **93.4**	| **93.5**	| **93.4**	| **93.3**
 XLNet	| 92.5	| 92.5	| 92.5	| 92.5
 ALBERT	| 91.4	| 91.4	| 91.4	| 91.4

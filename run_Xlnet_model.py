@@ -9,7 +9,7 @@ from transformers.optimization import AdamW
 from sys import platform
 
 from data_sst2 import DataPrecessForSentence
-from utils import train, validate, test
+from utils import train, validate, test, Metric
 from models import XlnetModel
 
 
@@ -181,6 +181,8 @@ def model_train_validate_test(train_df_input, dev_df_input, test_df_input, targe
             test_prediction = test_prediction[['prob_0', 'prob_1', 'prediction']]
             test_prediction.to_csv(os.path.join(target_dir_input, "test_prediction.csv"), index=False)
 
+            Metric(test_df_input['similarity'], test_prediction['prediction'])
+
         if patience_counter >= patience:
             print("-> Early stopping: patience limit reached, stopping...")
             break
@@ -241,12 +243,13 @@ if __name__ == "__main__":
 
     if args.pj:
         train_data_file = "train_pj.tsv"
+        target_dir = "output/Xlnet-pj/"
     else:
         train_data_file = "train.tsv"
+        target_dir = "output/Xlnet/"
 
     data_path = "data/"
     train_df = pd.read_csv(os.path.join(data_path, train_data_file), sep='\t', header=None, names=['similarity', 's1'])
     dev_df = pd.read_csv(os.path.join(data_path, "dev_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
     test_df = pd.read_csv(os.path.join(data_path, "test_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
-    target_dir = "output/Xlnet/"
     model_train_validate_test(train_df, dev_df, test_df, target_dir)
