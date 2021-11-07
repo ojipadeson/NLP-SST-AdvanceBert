@@ -247,7 +247,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='data for pj or pure')
     parser.add_argument('-p', '--pj', action='store_true',
                         help='use pj-data to train')
-    parser.add_argument('s', '--save', action='store_true',
+    parser.add_argument('-s', '--save', action='store_true',
                         help='save to pth file')
     args = parser.parse_args()
 
