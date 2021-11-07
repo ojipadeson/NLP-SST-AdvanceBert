@@ -247,6 +247,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='data for pj or pure')
     parser.add_argument('-p', '--pj', action='store_true',
                         help='use pj-data to train')
+    parser.add_argument('s', '--save', action='store_true',
+                        help='save to pth file')
     args = parser.parse_args()
 
     if args.pj:
@@ -260,4 +262,4 @@ if __name__ == "__main__":
     train_df = pd.read_csv(os.path.join(data_path, train_data_file), sep='\t', header=None, names=['similarity', 's1'])
     dev_df = pd.read_csv(os.path.join(data_path, "dev_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
     test_df = pd.read_csv(os.path.join(data_path, "test_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
-    model_train_validate_test(train_df, dev_df, test_df, target_dir)
+    model_train_validate_test(train_df, dev_df, test_df, target_dir, if_save_model=args.save)

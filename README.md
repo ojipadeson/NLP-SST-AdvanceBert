@@ -4,29 +4,38 @@ Use BERT, RoBERTa, XLNet and ALBERT models to classify the SST-2 data set based 
 
 Codes are runned on Nvidia Tesla K80(2496x2 cuda core, 12x2GB RAM)
 
+In this repo, a wider range of sentences is added to the dataset, which makes the task harder
+
+The "pj dataset" is generated from Stanford Sentiment Treebank,
+and divided to binary set according to sentiment label(float number range from 0-1).
+
+The classifying boundary is 0.5
+
+
 ### Result on test
  Model | Accuracy | Precision	| Recall | F1 | Parameters |
  ----   | -----  |----- |----- |----- |----- 
  BERT   | 87.6 | 87.8 | 87.8 | 87.6 | 110M |
 RoBERTa	| 89.2 | 89.2 | 89.2 | 89.2 | 223M |
-XLNet	| **90.2** | **90.2** | **90.3** | **90.2** | 125M |
+**XLNet** | **90.2** | **90.2** | **90.3** | **90.2** | 125M |
 ALBERT	| 87.6 | 87.6 | 87.6 | 87.6 | 340M |
 
 * *Albert is really hard to train*
+* *Roberta & Xlnet is more train-friendly*
 
 ### Result on dev
  Model | Accuracy | Precision	| Recall | F1 | Parameters |
  ----   | -----  |----- |----- |----- |----- 
  BERT   | 87.2 | 87.4 | 87.2 | 87.2 | 110M |
 RoBERTa	| 89.1 | 89.1 | 89.1 | 89.1 | 223M |
-XLNet	| **89.6** | **89.6** | **89.6** | **89.6** | 125M |
+**XLNet** | **89.6** | **89.6** | **89.6** | **89.6** | 125M |
 ALBERT	| 86.7 | 86.7 | 86.7 | 86.7 | 340M |
 
 ### Result on test -- On PJ dataset
  Model | Accuracy | Precision	| Recall | F1 | Parameters |
  ----   | -----  |----- |----- |----- |----- 
- BERT   | 86.9  | 87.1  | 87.0	| 86.9 | 110M |
-RoBERTa	|  |  |  |  | 223M |
+ BERT   | 86.9 | 87.1 | 87.0 | 86.9 | 110M |
+RoBERTa	| 89.0 | 88.9 | 89.0 | 89.0 | 223M |
 XLNet	|  |  |  |  | 125M |
 ALBERT	|  |  |  |  | 340M |
 
@@ -34,7 +43,7 @@ ALBERT	|  |  |  |  | 340M |
  Model | Accuracy | Precision	| Recall | F1 | Parameters |
  ----   | -----  |----- |----- |----- |----- 
  BERT   | 87.2  | 87.3  | 87.2	| 87.2 | 110M |
-RoBERTa	|  |  |  |  | 223M |
+RoBERTa	| 89.0 | 89.0 | 89.0 | 89.0 | 223M |
 XLNet	|  |  |  |  | 125M |
 ALBERT	|  |  |  |  | 340M |
 
@@ -51,8 +60,14 @@ https://huggingface.co/transformers/pretrained_models.html
 You may encounter OSerror for pytorch < 1.3, because pth file larger than 2GB.
 So it's recommended to test Bert & Roberta model for the first step 
 
+## Tips
+* It seems that dev loss is not a suitable indicator to decide training process, 
+such as learning rate, early stopping and so on.
+
 ## LICENSE
+### It's a repo for NLP class project
 ### Reimplement from **github@YJiangcm**, welcome star
+### But with several more features
 * With additional datasets
 * Easier use on Lab
 * More info for training
