@@ -55,7 +55,7 @@ def model_train_validate_test(train_df_input, dev_df_input, test_df_input, targe
 
     print("\t* Loading validation data...")
     dev_data = DataPrecessForSentence(tokenizer, dev_df_input, max_seq_len=max_seq_len)
-    dev_loader = DataLoader(dev_data, shuffle=True, batch_size=batch_size)
+    dev_loader = DataLoader(dev_data, shuffle=False, batch_size=batch_size)
 
     print("\t* Loading test data...")
     test_data = DataPrecessForSentence(tokenizer, test_df_input, max_seq_len=max_seq_len)
