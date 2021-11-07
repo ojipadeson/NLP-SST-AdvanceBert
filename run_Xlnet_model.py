@@ -18,7 +18,7 @@ def model_train_validate_test(train_df_input, dev_df_input, test_df_input, targe
                               epochs=120,
                               batch_size=32,
                               lr=2e-05,
-                              patience=20,
+                              patience=8,
                               max_grad_norm=10.0,
                               if_save_model=True,
                               checkpoint=None):
