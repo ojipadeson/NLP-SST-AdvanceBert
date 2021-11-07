@@ -137,12 +137,18 @@ def model_train_validate_test(train_df_input, dev_df_input, test_df_input, targe
                                                                                    (epoch_accuracy * 100)))
 
         print("* Validation for epoch {}:".format(epoch))
-        epoch_time, epoch_loss, epoch_accuracy, epoch_auc, _, = validate(model, dev_loader)
+        epoch_time, epoch_loss, epoch_accuracy, epoch_auc, dev_prob, = validate(model, dev_loader)
         valid_losses.append(epoch_loss)
         valid_accuracies.append(epoch_accuracy)
         valid_aucs.append(epoch_auc)
         print("-> Valid. time: {:.4f}s, loss: {:.4f}, accuracy: {:.4f}%, auc: {:.4f}\n"
               .format(epoch_time, epoch_loss, (epoch_accuracy * 100), epoch_auc))
+        dev_prediction = pd.DataFrame({'prob_1': dev_prob})
+        dev_prediction['prob_0'] = 1 - dev_prediction['prob_1']
+        dev_prediction['prediction'] = dev_prediction.apply(lambda x: 0 if (x['prob_0'] > x['prob_1']) else 1,
+                                                            axis=1)
+        dev_prediction = dev_prediction[['prob_0', 'prob_1', 'prediction']]
+        Metric(dev_df_input['similarity'], dev_prediction['prediction'])
 
         # Update the optimizer's learning rate with the scheduler.
         scheduler.step(epoch_accuracy)
