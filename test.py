@@ -1,4 +1,5 @@
 import os
+import argparse
 from sys import platform
 
 import torch
@@ -9,15 +10,52 @@ from data_sst2 import DataPrecessForSentence
 from models import BertModel, AlbertModel, RobertModel, XlnetModel
 from utils import test, Metric
 
-test_df = pd.read_csv(os.path.join('data/', "test_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
-target_dir = "output/Bert/"
+parser = argparse.ArgumentParser(description='test')
+parser.add_argument('--albert', action='store_true',
+                    help='run albert model')
+parser.add_argument('--albert_pj', action='store_true',
+                    help='run albert model on pj train dataset')
+parser.add_argument('--roberta', action='store_true',
+                    help='run albert model')
+parser.add_argument('--roberta_pj', action='store_true',
+                    help='run roberta model on pj train dataset')
+parser.add_argument('--xlnet', action='store_true',
+                    help='run xlnet model')
+parser.add_argument('--xlnet_pj', action='store_true',
+                    help='run xlnet model on pj train dataset')
+parser.add_argument('--dev', action='store_true',
+                    help='run test on pj dev dataset')
+args = parser.parse_args()
+
+if args.albert:
+    target_dir = 'output/Albert/'
+    bertmodel = AlbertModel(requires_grad=False)
+elif args.albert_pj:
+    target_dir = 'output/Albert-pj/'
+    bertmodel = AlbertModel(requires_grad=False)
+elif args.roberta:
+    target_dir = 'output/Roberta/'
+    bertmodel = RobertModel(requires_grad=False)
+elif args.roberta_pj:
+    target_dir = 'output/Roberta-pj/'
+    bertmodel = RobertModel(requires_grad=False)
+elif args.xlnet:
+    target_dir = 'output/Xlnet/'
+    bertmodel = XlnetModel(requires_grad=False)
+elif args.xlnet_pj:
+    target_dir = 'output/Xlnet-pj/'
+    bertmodel = XlnetModel(requires_grad=False)
+else:
+    raise Exception('Expect to choose a model.')
+
+if args.dev:
+    test_df = pd.read_csv(os.path.join('data/', "dev_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
+else:
+    test_df = pd.read_csv(os.path.join('data/', "test_pj.tsv"), sep='\t', header=None, names=['similarity', 's1'])
+
 max_seq_len = 50
 batch_size = 32
 
-bertmodel = BertModel(requires_grad=False)
-# bertmodel = AlbertModel(requires_grad=False)
-# bertmodel = RobertModel(requires_grad=False)
-# bertmodel = XlnetModel(requires_grad=False)
 tokenizer = bertmodel.tokenizer
 device = torch.device("cuda")
 
@@ -49,4 +87,4 @@ test_prediction = test_prediction[['prediction']]
 
 Metric(test_df['similarity'], test_prediction['prediction'])
 
-test_prediction.to_csv('prediction.tsv', sep='\t')
+test_prediction.to_csv(os.path.join(target_dir, 'prediction.tsv'), sep='\t')
