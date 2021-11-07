@@ -188,6 +188,9 @@ def model_train_validate_test(train_df_input, dev_df_input, test_df_input, targe
 
             Metric(test_df_input['similarity'], test_prediction['prediction'])
 
+            test_prediction = test_prediction[['prediction']]
+            test_prediction.to_csv(os.path.join(target_dir, 'prediction.tsv'), sep='\t')
+
         if patience_counter >= patience:
             print("-> Early stopping: patience limit reached, stopping...")
             break
