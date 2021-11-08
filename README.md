@@ -1,4 +1,6 @@
-# SST-2-sentiment-analysis
+# SST-2-sentiment-analysis Using Bert
+
+---
 
 Use BERT, RoBERTa, XLNet and ALBERT models to classify the SST-2 data set based on pytorch.
 
@@ -6,11 +8,18 @@ Codes are runned on Nvidia Tesla K80(2496x2 cuda core, 12x2GB RAM)
 
 In this repo, a wider range of sentences is added to the dataset, which makes the task harder
 
+---
+
 The "pj dataset" is generated from Stanford Sentiment Treebank,
-and divided to binary set according to sentiment label(float number range from 0-1).
+and divided to binary set according to sentiment label(float number range from 0-1)
 
 The classifying boundary is 0.5
 
+---
+
+Above rules are not sure, for details, the pj is conducted by *TA:* **github: @txsun1997**
+
+---
 
 ### Result on test
  Model | Accuracy | Precision	| Recall | F1 | Parameters |
@@ -31,6 +40,8 @@ RoBERTa	| 89.1 | 89.1 | 89.1 | 89.1 | 223M |
 **XLNet** | **89.6** | **89.6** | **89.6** | **89.6** | 125M |
 ALBERT	| 86.7 | 86.7 | 86.7 | 86.7 | 340M |
 
+---
+
 ### Result on test -- On PJ dataset
  Model | Accuracy | Precision	| Recall | F1 | Parameters |
  ----   | -----  |----- |----- |----- |----- 
@@ -47,6 +58,8 @@ RoBERTa	| 88.9 | 88.9 | 88.9 | 88.9 | 223M |
 **XLNet**	| **90.6** | **90.6** | **90.6** | **90.6** | 125M |
 ALBERT	|  |  |  |  | 340M |
 
+---
+
 * bert-base-uncased: 12-layer, 768-hidden, 12-heads, trained on lower-cased English text.
 * albert-xxlarge-v2: 12 repeating layer, 128 embedding, 4096-hidden, 64-heads, 
   ALBERT xxlarge model with no dropout, additional training data and longer training
@@ -56,9 +69,32 @@ ALBERT	|  |  |  |  | 340M |
 
 https://huggingface.co/transformers/pretrained_models.html
 
+---
+
+## Run
+```
+python run_Bert_model.py -s -p
+```
+```-s```  to save the best model to .pth
+
+```-p```  to use the pj train data
+
+Delete them if you don't need them
+
+Obviously you can change ```run_Bert_model.py``` to any similar file in this project.
+
+The **accuracy, score metrics** will be shown on ```logs(stdout)```, and ```prediction.tsv``` will be saved in ```./output```
+
 ## Test on Windows
-You may encounter OSerror for pytorch < 1.3, because pth file larger than 2GB.
-So it's recommended to test Bert & Roberta model for the first step 
+```
+python test.py --albert
+```
+Obviously you can change ```albert``` to any similar model stored in ```./output```
+
+You may encounter OSerror for pytorch < 1.3, because .pth file is larger than 2GB.
+If that happened it's recommended to test Bert & Roberta model for the first step 
+
+---
 
 ## Tips
 * It seems that dev loss is not a suitable indicator to decide training process, 
@@ -66,7 +102,7 @@ such as learning rate, early stopping and so on.
 
 ## LICENSE
 ### It's a repo for NLP class project
-### Reimplement from **github@YJiangcm**
+### Reimplement from **github: @YJiangcm**
 ### But with several more features
 * With additional datasets
 * Easier use on Lab
@@ -97,3 +133,5 @@ classification_report:
    macro avg      0.906     0.906     0.906      1101
 weighted avg      0.906     0.906     0.906      1101
 ```
+
+---
