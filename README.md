@@ -2,10 +2,6 @@
 
 ---
 
-CopyRight Notice: Modified from **github: @YJiangcm / SST-2-sentiment-analysis**
-
----
-
 Since Word2Vec, GloVe, etc word embedding can only get <80% accuracy on the pj dataset, this repo
 use BERT, RoBERTa, XLNet and ALBERT models to classify the SST-2 data set based on pytorch.
 (You can find Word2Vec, GloVe implementation on my other repos)
@@ -33,9 +29,9 @@ Above rules are not sure, for details, the pj is conducted by *TA:* **github: @t
  BERT   | 87.6 | 87.8 | 87.8 | 87.6 | 110M |
 RoBERTa	| 89.2 | 89.2 | 89.2 | 89.2 | 223M |
 **XLNet** | **90.2** | **90.2** | **90.3** | **90.2** | 125M |
-ALBERT	| 87.6 | 87.6 | 87.6 | 87.6 | 340M |
+ALBERT | 90.0 | 90.0 | 90.1 | 90.0 | 340M |
 
-* *Albert is really hard to train*
+* *Albert is really hard to train, we train it in few epochs*
 * *Roberta & Xlnet is more train-friendly*
 
 ### Result on dev
@@ -43,8 +39,8 @@ ALBERT	| 87.6 | 87.6 | 87.6 | 87.6 | 340M |
  ----   | -----  |----- |----- |----- |----- 
  BERT   | 87.2 | 87.4 | 87.2 | 87.2 | 110M |
 RoBERTa	| 89.1 | 89.1 | 89.1 | 89.1 | 223M |
-**XLNet** | **89.6** | **89.6** | **89.6** | **89.6** | 125M |
-ALBERT	| 86.7 | 86.7 | 86.7 | 86.7 | 340M |
+XLNet   | 89.6 | 89.6 | 89.6 | 89.6 | 125M |
+**ALBERT** | **90.6** | **90.6** | **90.6** | **90.6** | 340M |
 
 ---
 
@@ -54,7 +50,7 @@ ALBERT	| 86.7 | 86.7 | 86.7 | 86.7 | 340M |
  BERT   | 86.9 | 87.1 | 87.0 | 86.9 | 110M |
 RoBERTa	| 89.5 | 89.5 | 89.4 | 89.4 | 223M |
 **XLNet**	| **90.4** | **90.4** | **90.4** | **90.4** | 125M |
-ALBERT	|  |  |  |  | 340M |
+ALBERT	| 89.9 | 89.9 | 89.9 | 89.9 | 340M |
 
 ### Result on dev -- On PJ dataset
  Model | Accuracy | Precision	| Recall | F1 | Parameters |
@@ -62,7 +58,7 @@ ALBERT	|  |  |  |  | 340M |
  BERT   | 87.2  | 87.3  | 87.2	| 87.2 | 110M |
 RoBERTa	| 88.9 | 88.9 | 88.9 | 88.9 | 223M |
 **XLNet**	| **90.6** | **90.6** | **90.6** | **90.6** | 125M |
-ALBERT	|  |  |  |  | 340M |
+ALBERT	| 90.2 | 90.2 | 90.2 | 90.2 | 340M |
 
 ---
 
@@ -118,9 +114,9 @@ Be careful with the disk space.
 You can change early stopping or epoch parameter according to this.
 
 ## LICENSE
-### It's a repo for NLP class project
-### Reimplementation of some SOTA models
-### With several more features:
+#### It's a repo for NLP class project
+#### Reimplementation of some SOTA models
+#### With several more features:
 * With additional datasets
 * Easier use on Lab
 * More info for training
@@ -152,5 +148,12 @@ classification_report:
    macro avg      0.906     0.906     0.906      1101
 weighted avg      0.906     0.906     0.906      1101
 ```
+
+## Too Advanced for Current Project?
+Go to https://github.com/ojipadeson/Word-Embedding-SST for origin word embedding implementation
+
+---
+
+>CopyRight Notice: Modified from **github: @YJiangcm / SST-2-sentiment-analysis**
 
 ---
