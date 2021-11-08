@@ -106,12 +106,14 @@ such as learning rate, early stopping and so on.
 
 ## LICENSE
 ### It's a repo for NLP class project
-### Reimplement from **github: @YJiangcm**
-### But with several more features
+### Reimplementation of some SOTA models
+### With several more features:
 * With additional datasets
 * Easier use on Lab
 * More info for training
 * Perfectly suitable for NLP class project
+
+---
 
 ## Description
 
