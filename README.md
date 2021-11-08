@@ -6,7 +6,9 @@ CopyRight Notice: Modified from **github: @YJiangcm / SST-2-sentiment-analysis**
 
 ---
 
-Use BERT, RoBERTa, XLNet and ALBERT models to classify the SST-2 data set based on pytorch.
+Since Word2Vec, GloVe, etc word embedding can only get <80% accuracy on the pj dataset, this repo
+use BERT, RoBERTa, XLNet and ALBERT models to classify the SST-2 data set based on pytorch.
+(You can find Word2Vec, GloVe implementation on my other repos)
 
 Codes are runned on Nvidia Tesla K80(2496x2 cuda core, 12x2GB RAM)
 
@@ -122,7 +124,7 @@ You can change early stopping or epoch parameter according to this.
 * With additional datasets
 * Easier use on Lab
 * More info for training
-* Perfectly suitable for NLP class project
+* Perfectly suitable for NLP class project(if you find your accuracy unsatisfied)
 
 ---
 
