@@ -196,53 +196,6 @@ def model_train_validate_test(train_df_input, dev_df_input, test_df_input, targe
             break
 
 
-def model_load_test(test_df_input, target_dir_input, test_prediction_dir,
-                    test_prediction_name, max_seq_len=50, batch_size=32):
-    """
-    Parameters
-    ----------
-    test_df_input : pandas dataframe of test set.
-    target_dir_input : the path of pretrained model.
-    test_prediction_dir : the path that you want to save the prediction result to.
-    test_prediction_name : the file name of the prediction result.
-    max_seq_len: the max truncated length.
-    batch_size : the default is 32.
-    
-    """
-    bertmodel = AlbertModel(requires_grad=False)
-    tokenizer = bertmodel.tokenizer
-    device = torch.device("cuda")
-
-    print(20 * "=", " Preparing for testing ", 20 * "=")
-    if platform == "linux" or platform == "linux2":
-        checkpoint = torch.load(os.path.join(target_dir_input, "best.pth.tar"))
-    else:
-        checkpoint = torch.load(os.path.join(target_dir_input, "best.pth.tar"), map_location=device)
-
-    print("\t* Loading test data...")
-    test_data = DataPrecessForSentence(tokenizer, test_df_input, max_seq_len=max_seq_len)
-    test_loader = DataLoader(test_data, shuffle=False, batch_size=batch_size)
-
-    # Retrieving model parameters from checkpoint.
-    print("\t* Building model...")
-    model = bertmodel.to(device)
-    model.load_state_dict(checkpoint["model"])
-    print(20 * "=", " Testing BERT model on device: {} ".format(device), 20 * "=")
-
-    batch_time, total_time, accuracy, all_prob = test(model, test_loader)
-    print(
-        "\n-> Average batch processing time: {:.4f}s,"
-        " total test time: {:.4f}s, accuracy: {:.4f}%\n".format(batch_time, total_time, (accuracy * 100)))
-
-    test_prediction = pd.DataFrame({'prob_1': all_prob})
-    test_prediction['prob_0'] = 1 - test_prediction['prob_1']
-    test_prediction['prediction'] = test_prediction.apply(lambda x: 0 if (x['prob_0'] > x['prob_1']) else 1, axis=1)
-    test_prediction = test_prediction[['prob_0', 'prob_1', 'prediction']]
-    if not os.path.exists(test_prediction_dir):
-        os.makedirs(test_prediction_dir)
-    test_prediction.to_csv(os.path.join(test_prediction_dir, test_prediction_name), index=False)
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='data for pj or pure')
     parser.add_argument('-p', '--pj', action='store_true',

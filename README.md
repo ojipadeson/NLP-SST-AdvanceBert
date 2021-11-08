@@ -35,16 +35,16 @@ ALBERT	| 86.7 | 86.7 | 86.7 | 86.7 | 340M |
  Model | Accuracy | Precision	| Recall | F1 | Parameters |
  ----   | -----  |----- |----- |----- |----- 
  BERT   | 86.9 | 87.1 | 87.0 | 86.9 | 110M |
-RoBERTa	| 89.0 | 88.9 | 89.0 | 89.0 | 223M |
-XLNet	|  |  |  |  | 125M |
+RoBERTa	| 89.5 | 89.5 | 89.4 | 89.4 | 223M |
+**XLNet**	| **90.4** | **90.4** | **90.4** | **90.4** | 125M |
 ALBERT	|  |  |  |  | 340M |
 
 ### Result on dev -- On PJ dataset
  Model | Accuracy | Precision	| Recall | F1 | Parameters |
  ----   | -----  |----- |----- |----- |----- 
  BERT   | 87.2  | 87.3  | 87.2	| 87.2 | 110M |
-RoBERTa	| 89.0 | 89.0 | 89.0 | 89.0 | 223M |
-XLNet	|  |  |  |  | 125M |
+RoBERTa	| 88.9 | 88.9 | 88.9 | 88.9 | 223M |
+**XLNet**	| **90.6** | **90.6** | **90.6** | **90.6** | 125M |
 ALBERT	|  |  |  |  | 340M |
 
 * bert-base-uncased: 12-layer, 768-hidden, 12-heads, trained on lower-cased English text.
@@ -66,10 +66,34 @@ such as learning rate, early stopping and so on.
 
 ## LICENSE
 ### It's a repo for NLP class project
-### Reimplement from **github@YJiangcm**, welcome star
+### Reimplement from **github@YJiangcm**
 ### But with several more features
 * With additional datasets
 * Easier use on Lab
 * More info for training
 * Perfectly suitable for NLP class project
 
+## Description
+
+```
+* Training epoch 10:
+Avg. batch proc. time: 0.6357s, loss: 0.0235: 100%|█| 267/267 [02:50<00:00,  1.5
+-> Training time: 170.3649s, loss = 0.0235, accuracy: 99.4148%
+* Validation for epoch 10:
+-> Valid. time: 6.7613s, loss: 0.5022, accuracy: 90.5540%, auc: 0.9457
+
+Accuracy: 90.6%
+Precision: 90.6%
+Recall: 90.6%
+F1: 90.6%
+classification_report:
+
+              precision    recall  f1-score   support
+
+     class_0      0.925     0.885     0.905       558
+     class_1      0.887     0.926     0.906       543
+
+    accuracy                          0.906      1101
+   macro avg      0.906     0.906     0.906      1101
+weighted avg      0.906     0.906     0.906      1101
+```
