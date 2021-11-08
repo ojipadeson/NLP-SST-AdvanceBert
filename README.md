@@ -89,13 +89,18 @@ Obviously you can change ```run_Bert_model.py``` to any similar file in this pro
 
 The **accuracy, score metrics** will be shown on ```logs(stdout)```, and ```prediction.tsv``` will be saved in ```./output```
 
+**If you want to simply get all models run on a GPU server using jupyter notebook, simply do:**
+1. Fork the repo to your Github
+2. Change the first line of RUN_ALL.ipynb to your Github username and token
+3. Click ```>run all``` and wait
+
 ## Test on Windows
 ```
 python test.py --albert
 ```
 Obviously you can change ```albert``` to any similar model stored in ```./output```
 
-You may encounter OSerror for pytorch < 1.3, because .pth file is larger than 2GB.
+You may encounter OSerror for pytorch < 1.4, because .pth file is larger than 2GB.
 If that happened it's recommended to test Bert & Roberta model for the first step 
 
 ---
@@ -103,6 +108,12 @@ If that happened it's recommended to test Bert & Roberta model for the first ste
 ## Tips
 * It seems that dev loss is not a suitable indicator to decide training process, 
 such as learning rate, early stopping and so on.
+  
+* The approximate size of each model.pth: Bert: 1.3GB; Albert: 2.4GB; Roberta: 1.5GB; Xlnet: 4.2GB. 
+Be careful with the disk space.
+  
+* On device K80, the average training time: Albert: 1.5h(20min/epoch); Other: 1h(4min/epoch).
+You can change early stopping or epoch parameter according to this.
 
 ## LICENSE
 ### It's a repo for NLP class project
