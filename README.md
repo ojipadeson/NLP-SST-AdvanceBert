@@ -2,6 +2,10 @@
 
 ---
 
+CopyRight Notice: Modified from **github: @YJiangcm / SST-2-sentiment-analysis**
+
+---
+
 Use BERT, RoBERTa, XLNet and ALBERT models to classify the SST-2 data set based on pytorch.
 
 Codes are runned on Nvidia Tesla K80(2496x2 cuda core, 12x2GB RAM)
