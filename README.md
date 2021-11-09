@@ -156,6 +156,8 @@ weighted avg      0.906     0.906     0.906      1101
 
 ---
 
->CopyRight Notice: Modified from [this repo](https://github.com/YJiangcm/SST-2-sentiment-analysis)
+## Acknowledgment
+
+This project is based on [this repo@YJiangcm](https://github.com/YJiangcm/SST-2-sentiment-analysis)
 
 ---
