@@ -23,6 +23,10 @@ parser.add_argument('--xlnet', action='store_true',
                     help='run xlnet model')
 parser.add_argument('--xlnet_pj', action='store_true',
                     help='run xlnet model on pj train dataset')
+parser.add_argument('--bert', action='store_true',
+                    help='run bert model')
+parser.add_argument('--bert_pj', action='store_true',
+                    help='run bert model on pj train dataset')
 parser.add_argument('--dev', action='store_true',
                     help='run test on pj dev dataset')
 args = parser.parse_args()
@@ -45,6 +49,12 @@ elif args.xlnet:
 elif args.xlnet_pj:
     target_dir = 'output/Xlnet-pj/'
     bertmodel = XlnetModel(requires_grad=False)
+elif args.bert:
+    target_dir = 'output/Bert/'
+    bertmodel = BertModel(requires_grad=False)
+elif args.bert_pj:
+    target_dir = 'output/Bert-pj/'
+    bertmodel = BertModel(requires_grad=False)
 else:
     raise Exception('Expect to choose a model.')
 
