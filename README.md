@@ -21,7 +21,7 @@ The classifying boundary is 0.5
 
 ---
 
-Above rules are not sure, for details, the pj is conducted by *TA:* **github: @txsun1997**
+Above rules are not sure, for details, the pj is conducted by *TA:* [**github: @txsun1997**](https://github.com/txsun1997)
 
 ---
 
@@ -156,6 +156,6 @@ Go to https://github.com/ojipadeson/Word-Embedding-SST for origin word embedding
 
 ---
 
->CopyRight Notice: Modified from **github: @YJiangcm / SST-2-sentiment-analysis**
+>CopyRight Notice: Modified from [**github: @YJiangcm/SST-2-sentiment-analysis**](https://github.com/YJiangcm/SST-2-sentiment-analysis)
 
 ---
