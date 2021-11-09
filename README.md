@@ -1,5 +1,7 @@
 # SST-2-sentiment-analysis Using Bert
 
+[[简体中文](README_zh.md) | [English](README.md)]
+
 ---
 
 Since Word2Vec, GloVe, etc word embedding can only get <80% accuracy on the pj dataset, this repo
