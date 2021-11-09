@@ -1,5 +1,7 @@
 # SST-2-sentiment-analysis Using Bert
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 [[简体中文](README_zh.md) | [English](README.md)]
 
 ---
