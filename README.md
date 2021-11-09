@@ -85,13 +85,13 @@ python run_Bert_model.py -s -p
 
 Delete them if you don't need them
 
-Obviously you can change ```run_Bert_model.py``` to any similar file in this project.
+Obviously you can change [run_Bert_model.py](run_Bert_model.py) to any similar file in this project.
 
-The **accuracy, score metrics** will be shown on ```logs(stdout)```, and ```prediction.tsv``` will be saved in ```./output```
+The **accuracy, score metrics** will be shown on ```logs(stdout)```, and [prediction.tsv](./output/Bert/prediction.tsv) will be saved in ```./output```
 
 **If you want to simply get all models run on a GPU server using jupyter notebook, simply do:**
 1. Fork the repo to your Github
-2. Change the first line of RUN_ALL.ipynb to your Github username and token
+2. Change the first line of [RUN_ALL.ipynb](RUN_ALL.ipynb) to your Github username and token
 3. Click ```>run all``` and wait
 
 ## Test on Windows
