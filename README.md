@@ -21,7 +21,7 @@ The classifying boundary is 0.5
 
 ---
 
-Above rules are not sure, for details, the pj is conducted by *TA:* [**github: @txsun1997**](https://github.com/txsun1997)
+Above rules are not sure, for details, the pj is conducted by our [TA](https://github.com/txsun1997)
 
 ---
 
@@ -71,7 +71,7 @@ ALBERT	| 90.2 | 90.2 | 90.2 | 90.2 | 340M |
 * roberta-base: 12-layer, 768-hidden, 12-heads, RoBERTa using the BERT-base architecture
 * xlnet-large-cased: 24-layer, 1024-hidden, 16-heads, XLNet Large English model
 
-https://huggingface.co/transformers/pretrained_models.html
+Detailed information in [Transformers](https://huggingface.co/transformers/pretrained_models.html)
 
 ---
 
@@ -152,10 +152,10 @@ weighted avg      0.906     0.906     0.906      1101
 ```
 
 ## Too Advanced for Current Project?
-Go to https://github.com/ojipadeson/Word-Embedding-SST for origin word embedding implementation
+[Here](https://github.com/ojipadeson/Word-Embedding-SST) for origin word embedding implementation
 
 ---
 
->CopyRight Notice: Modified from [**github: @YJiangcm/SST-2-sentiment-analysis**](https://github.com/YJiangcm/SST-2-sentiment-analysis)
+>CopyRight Notice: Modified from [this repo](https://github.com/YJiangcm/SST-2-sentiment-analysis)
 
 ---
