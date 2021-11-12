@@ -31,9 +31,9 @@ Above rules are not sure, for details, the pj is conducted by our [TA](https://g
  Model | Accuracy | Precision	| Recall | F1 | Parameters |
  ----   | -----  |----- |----- |----- |----- 
  BERT   | 87.6 | 87.8 | 87.8 | 87.6 | 110M |
-RoBERTa	| 89.2 | 89.2 | 89.2 | 89.2 | 223M |
-**XLNet** | **90.2** | **90.2** | **90.3** | **90.2** | 125M |
-ALBERT | 90.0 | 90.0 | 90.1 | 90.0 | 340M |
+RoBERTa	| 89.2 | 89.2 | 89.2 | 89.2 | 125M |
+**XLNet** | **90.2** | **90.2** | **90.3** | **90.2** | 340M |
+ALBERT | 90.0 | 90.0 | 90.1 | 90.0 | 223M |
 
 * *Albert is really hard to train, we train it in few epochs*
 * *Roberta & Xlnet is more train-friendly*
@@ -42,9 +42,9 @@ ALBERT | 90.0 | 90.0 | 90.1 | 90.0 | 340M |
  Model | Accuracy | Precision	| Recall | F1 | Parameters |
  ----   | -----  |----- |----- |----- |----- 
  BERT   | 87.2 | 87.4 | 87.2 | 87.2 | 110M |
-RoBERTa	| 89.1 | 89.1 | 89.1 | 89.1 | 223M |
-XLNet   | 89.6 | 89.6 | 89.6 | 89.6 | 125M |
-**ALBERT** | **90.6** | **90.6** | **90.6** | **90.6** | 340M |
+RoBERTa	| 89.1 | 89.1 | 89.1 | 89.1 | 125M |
+XLNet   | 89.6 | 89.6 | 89.6 | 89.6 | 340M |
+**ALBERT** | **90.6** | **90.6** | **90.6** | **90.6** | 223M |
 
 ---
 
